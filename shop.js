@@ -1,15 +1,22 @@
-const express = require('express')
+const path = require('path');
 
-const router = express.Router()
+const express = require('express');
 
-router.get("/shop", (req, res, next) => {
-  //   console.log("in the middleware");
-  res.send("<h1>Hello Express world </h1>");
-});
+const shopController = require('../controllers/shop');
 
-router.get("/", (req, res, next) => {
-  //   console.log("in the middleware");
-  res.send("<h1>Hello Express world </h1>");
-});
+const router = express.Router();
 
-module.exports = router
+router.get('/', shopController.getIndex);
+
+router.get('/products', shopController.getProducts);
+
+router.get('/products/:productId', shopController.getProduct)
+
+router.get('/cart', shopController.getCart);
+
+router.get('/orders', shopController.getOrders);
+
+router.get('/checkout', shopController.getCheckout);
+
+module.exports = router;
+ 
