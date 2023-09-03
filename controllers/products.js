@@ -9,7 +9,7 @@ exports.getAddProduct = (req, res, next) => {
     activeAddProduct: true,
   });
 };
-
+ 
 exports.postAddProduct = (req, res, next) => {
   const product = new Product(req.body.title)
   product.save()
